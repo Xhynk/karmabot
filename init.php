@@ -20,5 +20,6 @@
 		}
 	}
 
-	$database = new KarmabotDatabase();
+	$database	= new KarmabotDatabase();
+	$mysqli		= $database->connect;
 ?>
