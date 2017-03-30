@@ -4,6 +4,7 @@
 	 *
 	 * @author	Alexander Demchak (Xhynk)
 	 * @link	http://jamsandjelli.es/api/slack-api-v2/karmabot/
+	 * @link	github.com/xhynk/karmabot/
 	 * @package	Karmabot->Functions
 	 *
 	 * @internal { This file includes commonly used functions, including general
@@ -47,14 +48,19 @@
 	}
 
 	/**
-	 * Fetch Karma Functions
+	 * Fetch/Update Karma Functions
 	 *
 	 * @since 1.0
 	 * @return Karma balance for parsed user
 	 */
-	function fetch_karma( $username ){
+	function fetch_karma_from_database( $username ){
 		global $mysqli;
 		return $mysqli->query( "SELECT `karma_received` FROM `karmabot_list` WHERE `users`='". $username ."'" )->fetch_object()->karma_received;
+	}
+
+	function update_karma_in_database( $username, $new_karma ){
+		global $mysqli;
+		$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='". $new_karma ."' WHERE `users`='". $username ."'" );
 	}
 
 	/**
@@ -101,7 +107,7 @@
 
 		public function __construct() {
 			$this->name = parse_user();
-			$this->karma['current'] = fetch_karma( $this->name );
+			$this->karma['current'] = fetch_karma_from_database( $this->name );
 			$this->karma['adjusted'] = ''; // Prefill this to hide E_Warnings
 		}
  	}
@@ -118,6 +124,13 @@
 		$karma	= intval( $karma ) - intval( parse_karma_to_subtract() ); // Attempt to subtract some karma | TODO: Make this not always run.
 
 		$user->karma['adjusted'] = $karma;
+
+		// Send this new value to the database
+		if( intval( $user->karma['current'] ) != intval( $user->karma['adjusted'] ) ){
+			update_karma_in_database( $user->name, $user->karma['adjusted'] );
+		} else {
+			unset( $user->karma['adjusted'] );
+		}
 	}
 
 	/**

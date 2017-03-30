@@ -4,6 +4,7 @@
 	 *
 	 * @author	Alexander Demchak (Xhynk)
 	 * @link	http://jamsandjelli.es/api/slack-api-v2/karmabot/
+	 * @link	github.com/xhynk/karmabot/
 	 * @version	1.1
 	 *
 	 * To activate Karmabot, use of the following command:
@@ -53,7 +54,7 @@
 	## c(”)(”)
 
 	/**
-	 * Initiate the User Object
+	 * Initiate the User Object, Modify Karma
 	 *
 	 * @since	1.1
 	 * @internal { The $user was getting complex, going to add some class
@@ -61,17 +62,17 @@
  	 *	easier to work with as Karmabot grows. }
 	 */
 	$user = new KarmabotUser();
-
 	adjust_karma( $user );
+
 
 	if( $karma != $current_karma ){
 		// Karma has been updated
 		$response_type = 'update';
-		$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='". $karma ."' WHERE `users`='". $user->name ."'" );
+	#####	$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='". $karma ."' WHERE `users`='". $user->name ."'" );
 	} else if( parse_for_karma_reset() == true ){
 		//Karma is being reset to 0
 		$response_type = 'update';
-		$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='0' WHERE `users`='". $user->name ."'" );
+	#####	$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='0' WHERE `users`='". $user->name ."'" );
 	} else {
 		$response_type = 'fetch';
 	}
