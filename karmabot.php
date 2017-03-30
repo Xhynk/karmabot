@@ -65,33 +65,30 @@
 	adjust_karma( $user );
 
 
-	if( $karma != $current_karma ){
-		// Karma has been updated
-		$response_type = 'update';
-	#####	$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='". $karma ."' WHERE `users`='". $user->name ."'" );
-	} else if( parse_for_karma_reset() == true ){
-		//Karma is being reset to 0
-		$response_type = 'update';
-	#####	$mysqli->query( "UPDATE `karmabot_list` SET `karma_received`='0' WHERE `users`='". $user->name ."'" );
-	} else {
-		$response_type = 'fetch';
-	}
 
 	if( parse_for_help() == true ){
-		$response_array[] = array(
-			'response_type' => 'ephemeral',
-			'text' => "I need a `@name`\r\nI can adjust karma like `give @name +5 karma`\r\nBork something? I can reset with `@name -sudo --reset`"
-		);
+		$response_type = 'ephemeral';
+		$response_text = "I need a `@name`\r\nI can adjust karma like `give @name +5 karma`\r\nBork something? I can reset with `@name -sudo --reset`";
 	} else {
-		$response_array[] = array(
-			'response_type' => 'in_channel',
-			'text' => current( explode( '|', compile_initial_response( $GLOBALS['karma_mod'], $user->name, $user->karma['adjusted'] ) ) )
-		);
+		$response_type = 'in_channel';
+		$response_text = compile_response( $user );
 	}
 
-	//echo substr( json_encode( $response_array ), 1, -1 );
+	/**
+	 * Build the Slack Reponse JSON Array and Output It
+	 *
+	 * @since	1.1
+	 */
+	$response_array = array(
+		'response_type' => $response_type,
+		'text' => $response_text
+	);
+	echo json_encode( $response_array );
 
-	var_dump( $user );
-
+	/**
+	 * Close the MySQLI Connection
+	 *
+	 * @since	0.1
+	 */
 	mysqli_close( $mysqli );
 ?>
