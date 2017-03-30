@@ -1,5 +1,24 @@
 <?php
+	/**
+	 * Karmabot->Init
+	 *
+	 * @author	Alexander Demchak (Xhynk)
+	 * @link	http://jamsandjelli.es/api/slack-api-v2/karmabot/
+	 * @link	github.com/xhynk/karmabot/
+	 * @package	Karmabot->Init
+	 *
+	 * @internal { This file Initializes the database connection via mysqli. }
+	*/
+
+	##  (\ /)
+	## ( . .) ♥ ~< Code Block - i: Require Database Config >
+	## c(”)(”)
+
 	require_once( __DIR__ . '/config.php' );
+
+	##  (\ /)
+	## ( . .) ♥ ~< Code Block - A: Create & Initialize Karmabot Database Class >
+	## c(”)(”)
 
 	class KarmabotDatabase {
 		function __construct() {
@@ -20,5 +39,12 @@
 		}
 	}
 
-	$database = new KarmabotDatabase();
+	function init_mysqli(){
+		global $mysqli;
+
+		$database = new KarmabotDatabase();
+		$mysqli = $database->connect;
+	}
+
+	init_mysqli();
 ?>
