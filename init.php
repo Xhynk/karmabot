@@ -20,6 +20,12 @@
 		}
 	}
 
-	$database	= new KarmabotDatabase();
-	$mysqli		= $database->connect;
+	function init_mysqli(){
+		global $mysqli;
+
+		$database = new KarmabotDatabase();
+		$mysqli = $database->connect;
+	}
+
+	init_mysqli();
 ?>

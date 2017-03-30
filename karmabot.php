@@ -60,49 +60,9 @@
  	 *	validation and other things, this will make the user and their Karma
  	 *	easier to work with as Karmabot grows. }
 	 */
+	$user = new KarmabotUser();
 
-	 /* Example Class:
-
-		 class Order {
-			private $my_total;
-			private $my_lineitems;
-
-			public function getItems() { return $this->my_lineitems; }
-			public function addItem(Product $p) { $this->my_lineitems[] = $p; }
-			public function getTotal() { return $this->my_total; }
-
-			public function forJSON() {
-			    $items_json = array();
-			    foreach($this->my_lineitems as &$item) $items_json[] = $item->forJSON();
-			    return array(
-			        'total' => $this->getTotal(),
-			        'items' => $items_json
-			    );
-			}
-		}
-
-		$o = new Order();
-		// do some stuff with it
-		$json = json_encode($o->forJSON());
-
-	*/
-
-	// Users will be initiated here:
-	$user = new stdClass();
-	$user->karma->current;
-	$user->name = parse_user();
-
-	# NOTE:	I believe I want to start using the $user object more,
-	#		so I'm going to be adding karma balance and stuff to it
-	#		to better keep track of it.
-
-	// I almost always want to know the users current Karma balance
-	$user->karma->current = $mysqli->query( "SELECT `karma_received` FROM `karmabot_list` WHERE `users`='". $user->name ."'" )->fetch_object()->karma_received;
-
-	// Modify Karma if any is added or removed
-	$karma	= intval( $current_karma );
-	$karma	= intval( $karma ) + intval( parse_karma_to_add() ); // Attempt to add some karma
-	$karma	= intval( $karma ) - intval( parse_karma_to_subtract() ); // Attempt to subtract some karma
+	adjust_karma( $user );
 
 	if( $karma != $current_karma ){
 		// Karma has been updated
@@ -124,12 +84,13 @@
 	} else {
 		$response_array[] = array(
 			'response_type' => 'in_channel',
-			'text' => current( explode( '|', compile_initial_response( $response_type, $user->name, $karma ) ) )
+			'text' => current( explode( '|', compile_initial_response( $GLOBALS['karma_mod'], $user->name, $user->karma['adjusted'] ) ) )
 		);
 	}
 
-	echo substr( json_encode( $response_array ), 1, -1 );
-	//var_dump( $karma ); var_dump( $current_karma );
+	//echo substr( json_encode( $response_array ), 1, -1 );
 
-	mysqli_close( $database->connect );
+	var_dump( $user );
+
+	mysqli_close( $mysqli );
 ?>

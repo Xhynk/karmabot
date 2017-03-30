@@ -37,7 +37,7 @@
 	## c(”)(”)
 
 	/**
-	 * Create "Parse User" Function
+	 * "Parse User" Function
 	 *
 	 * @since	0.1
 	 * @return The username in the format: @username
@@ -47,28 +47,90 @@
 	}
 
 	/**
-	 * Create "Add, Substractm, and Reset Karma" Functions
+	 * Fetch Karma Functions
+	 *
+	 * @since 1.0
+	 * @return Karma balance for parsed user
+	 */
+	function fetch_karma( $username ){
+		global $mysqli;
+		return $mysqli->query( "SELECT `karma_received` FROM `karmabot_list` WHERE `users`='". $username ."'" )->fetch_object()->karma_received;
+	}
+
+	/**
+	 * Create "Add, Substract, and Reset Karma" Functions
 	 *
 	 * @since	0.1
 	 * @internal { These functions try and see if you're adding or subtracting
- 	 *	Karma for a user, and will set the appropriate query type. }
+	 *	Karma for a user, and will set the appropriate query type. }
 	 */
 	function parse_karma_to_add(){
-		return get_string_between( $_POST['text'], ' +', ' karma');
+		if( get_string_between( $_POST['text'], ' +', ' karma') ){
+			$GLOBALS['karma_mod'] = 'add';
+			return get_string_between( $_POST['text'], ' +', ' karma');
+		}
 	}
 
 	function parse_karma_to_subtract(){
-		return get_string_between( $_POST['text'], ' -', ' karma');
+
+		if( get_string_between( $_POST['text'], ' -', ' karma') ){
+			$GLOBALS['karma_mod'] = 'sub';
+			return get_string_between( $_POST['text'], ' -', ' karma');
+		}
 	}
 
 	function parse_for_karma_reset(){
 		if( strpos( $_POST['text'], '--reset' ) !== false && strpos( $_POST['text'], '-sudo' ) !== false ){
+			$GLOBALS['karma_mod'] = 'reset';
 			return true;
 		}
 	}
 
+	/**
+	 * Create User Object
+	 *
+	 * @since 1.1
+	 * @return (Object) $user
+	 * @internal { Functions to add, remove, reset, and otherwise modify Karma
+ 	 *	will be applied directly to the $user object through functions, for
+ 	 *	example: $user->add_karma(); }
+	 */
+	class KarmabotUser {
+ 		public $name;
+ 		public $karma;
+
+		public function __construct() {
+			$this->name = parse_user();
+			$this->karma['current'] = fetch_karma( $this->name );
+			$this->karma['adjusted'] = ''; // Prefill this to hide E_Warnings
+		}
+ 	}
+
+	/**
+	 * Adjust a User's Karma
+	 *
+	 * @since 1.1
+	 */
+	function adjust_karma( $user ) {
+		// Do some math on the `intval()` of each stage.
+		$karma	= intval( $user->karma['current'] );
+		$karma	= intval( $karma ) + intval( parse_karma_to_add() ); // Attempt to add some karma | TODO: Make this not always run.
+		$karma	= intval( $karma ) - intval( parse_karma_to_subtract() ); // Attempt to subtract some karma | TODO: Make this not always run.
+
+		$user->karma['adjusted'] = $karma;
+	}
+
+	/**
+	 * Create "-Help" Function
+	 *
+	 * @since 0.1
+	 * @internal { This will force the output to instead be a list of commands
+  	 *	that Karmabot can make use of, and perhaps a link to the Karmabot repo
+ 	 *	on github (https://github.com/Xhynk/karmabot) }
+	 */
 	function parse_for_help(){
 		if( strpos( $_POST['text'], '-help' ) !== false ){
+			$GLOBALS['karma_mod'] = 'help';
 			return true;
 		}
 	}
