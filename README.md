@@ -12,12 +12,12 @@ Standard **Ҝᴀʀᴍᴀ** balance is denoted in quotes when displayed, with the
 # Commands
 >Note: `/karmabot` and `/karmabot,` both work currently.
 
-`/karmabot -help` - Display some quick tips.
-`/karmabot, give @alex +10 karma` - Add **Ҝᴀʀᴍᴀ** to a user's balance.
-`/karmabot, take -10 karma from @alex` - Subtract **Ҝᴀʀᴍᴀ** from a user's balance.
-`/karmabot @alex -sudo --reset` - Reset a user's **Ҝᴀʀᴍᴀ** back to 0.
-`/karmabot add new player @name "m/f"`. - Add users to the game! "m" or "f" is required for gender pronoun selection.
-`/karmabot, how much karma does @alex have?` - If a **Ҝᴀʀᴍᴀ** function isn't ran, it will run a **Ҝᴀʀᴍᴀ** balance query instead.
+- `/karmabot -help` - Display some quick tips.
+- `/karmabot, give @alex +10 karma` - Add **Ҝᴀʀᴍᴀ** to a user's balance.
+- `/karmabot, take -10 karma from @alex` - Subtract **Ҝᴀʀᴍᴀ** from a user's balance.
+- `/karmabot @alex -sudo --reset` - Reset a user's **Ҝᴀʀᴍᴀ** back to 0.
+- `/karmabot add new player @name "m/f"`. - Add users to the game! "m" or "f" is required for gender pronoun selection.
+- `/karmabot, how much karma does @alex have?` - If a **Ҝᴀʀᴍᴀ** function isn't ran, it will run a **Ҝᴀʀᴍᴀ** balance query instead.
 
 # Coming Soon
 - I'd like to have a daily or weekly cap, whether it limits users giving, or users receiving. Like a max of me giving any combo of people 100 **Ҝᴀʀᴍᴀ** in a day, or have a max of being able to receive 100.
