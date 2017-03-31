@@ -64,11 +64,11 @@
 	$user = new KarmabotUser();
 	adjust_karma( $user );
 
-
+	$invoking_user = $_POST['user_name'];
 
 	if( parse_for_help() == true ){
 		$response_type = 'ephemeral';
-		$response_text = "I need a `@name`\r\nI can adjust karma like `give @name +5 karma`\r\nBork something? I can reset with `@name -sudo --reset`";
+		$response_text = ">Invoke me with the `/karmabot` command\n>I can give users Ҝᴀʀᴍᴀ - `/karmabot, give @$invoking_user +10 karma`\n>I giveth, I taketh away - `/karmabot, take -10 karma from @$invoking_user`\n>Bork something? I can reset Ҝᴀʀᴍᴀ with `/karmabot @$invoking_user -sudo --reset`\n>Check a users Ҝᴀʀᴍᴀ balance with something like `/karmabot, how much karma does @$invoking_user have?`\n>Add Users with the command `/karmabot add new player @name \"m/f\"`.\nRead more on GitHub: https://github.com/Xhynk/karmabot";
 	} else {
 		$response_type = 'in_channel';
 		$response_text = compile_response( $user );

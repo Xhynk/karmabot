@@ -19,4 +19,5 @@
 	define( 'DB_USER', DB_PREFIX . 'kbotusr' );
 	define( 'DB_PASS', '0Hq3karma7177135fzhF%%!@#' );
 	define( 'DB_HOST', 'localhost' );
+	define( 'SCRIPT', '//jamsandjelli.es' . $_SERVER['REQUEST_URI'] );
 ?>

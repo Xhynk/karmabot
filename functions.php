@@ -102,7 +102,6 @@
 	}
 
 	function parse_karma_to_subtract(){
-
 		if( get_string_between( $_POST['text'], ' -', ' karma') ){
 			$GLOBALS['karma_mod'] = 'sub';
 			return get_string_between( $_POST['text'], ' -', ' karma');
@@ -113,6 +112,20 @@
 		if( strpos( $_POST['text'], '--reset' ) !== false && strpos( $_POST['text'], '-sudo' ) !== false ){
 			$GLOBALS['karma_mod'] = 'reset';
 			return true;
+		}
+	}
+
+	function insert_new_player( $username, $gender = 'm' ){
+		if( strpos( $_POST['text'], 'add new player' ) !== false ){
+			if( preg_match_all('/.*?(@)((?:[a-z0-9]+)).*?(".*?")/is', $_POST['text'], $matches) ){ // Check to see if the format of the string is: /karmabot add new player @name "m/f"
+				$GLOBALS['karma_mod'] = 'new-player';
+				$gender = get_string_between( $_POST['text'], ' "', '"');
+
+				global $mysqli;
+				$mysqli->query( "INSERT INTO `karmabot_list` (`id`, `users`, `gender`, `karma_received`, `karma_given`, `karma_available`) VALUES (NULL, '$username', '$gender', '0', '0', '0');" );
+			} else {
+				$GLOBALS['karma_mod'] = 'new-player--failed';
+			}
 		}
 	}
 
@@ -203,6 +216,8 @@
 		$name = $user->name;
 		$karma = $user->karma['adjusted'];
 
+		insert_new_player( $name ); // I'd like to not run this all the time, but the if is inside this function
+
 		if( $GLOBALS['karma_mod'] == 'add' || $GLOBALS['karma_mod'] == 'sub' ){ // We've added or subtracted Karma, need general openings
 			$karma_report = "$name now has `💎$karma`";
 			if( roll() ){
@@ -244,6 +259,18 @@
 				'Geez, you monster... taking all that Ҝᴀʀᴍᴀ from '. gender_pronouns( $user->gender, 'objective' ) .' :(',
 				'Are you sure? Does '. gender_pronouns( $user->gender, 'subjective' ) .' really deserve this though?',
 				'How do you sleep at night?'
+			);
+		} else if( $GLOBALS['karma_mod'] == 'new-player' ){ // New Player Joins the Fight!
+			$karma_report = '';
+			$openings = array(
+				"`$name` has been added!",
+				"Welcome `$name`! Have fun!",
+				"`$name` has joined the fight!"
+			);
+		} else if( $GLOBALS['karma_mod'] == 'new-player--failed' ){ // New Player Failed to Join the Fight...
+			$karma_report = '';
+			$openings = array(
+				"To add a player, use the format `add new player @name \"m/f\"` where \"m\" or \"f\" reflects the gender of the user.",
 			);
 		} else { // Not sure what we've done. For now, the usecase is "Checking Karma Balance"
 			$karma_report = "$name currently has `💎$karma`";
