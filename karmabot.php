@@ -46,8 +46,8 @@
 	 *
 	 * @since	0.1
 	 */
-	require_once( __DIR__ . '/init.php' );
-	require_once( __DIR__ . '/functions.php' );
+	require_once( __DIR__ . '/config/init.php' );
+	require_once( __DIR__ . '/lib/functions.php' );
 
 	##  (\ /)
 	## ( . .) ♥ ~< Code Block - A: Karmabot Setup >
