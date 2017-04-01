@@ -20,8 +20,8 @@ Standard **Ҝᴀʀᴍᴀ** balance is denoted in quotes when displayed, with the
 - `/karmabot, how much karma does @alex have?` - If a **Ҝᴀʀᴍᴀ** function isn't ran, it will run a **Ҝᴀʀᴍᴀ** balance query instead.
 
 # Coming Soon
+- I'd like to have better "failure" notices, if the /karmabot command fails, or the mysqli query fails.
 - I'd like to have a daily or weekly cap, whether it limits users giving, or users receiving. Like a max of me giving any combo of people 100 **Ҝᴀʀᴍᴀ** in a day, or have a max of being able to receive 100.
 - I'd like a lottery system, perhaps making use of Action Buttons.
 - I'd like "admin only" options, like "reset", which would notify me (or an admin that's defined in the db)
-- I'd like some better "human-like" logic.
-- I need to not always run math, but maybe that's not realistic.
+- I'd like some better "human-like" logic/

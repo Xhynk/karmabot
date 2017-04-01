@@ -81,7 +81,7 @@
 	 */
 	$response_array = array(
 		'response_type' => $response_type,
-		'text' => $response_text
+		'text' => $response_text,
 	);
 	echo json_encode( $response_array );
 
