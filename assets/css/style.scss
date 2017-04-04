@@ -20,7 +20,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 }
 
 @for $index from 1 through 6 {
-	.main-content h#{$index}{
+	.main-content h#{$index} span {
 		// Gradient Text
 		background: linear-gradient(
 			90deg,
