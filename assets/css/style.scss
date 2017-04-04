@@ -18,7 +18,7 @@ $color-secondary: #6d8dff; //109 141 255
 @for $index from 1 through 6 {
 	.main-content h#{$index}{
 		background: linear-gradient(
-			left,
+			90deg,
 			$color-primary,
 			$color-secondary
 		);
