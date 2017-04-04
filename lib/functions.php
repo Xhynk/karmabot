@@ -188,8 +188,15 @@
  	 *	on github (https://github.com/Xhynk/karmabot) }
 	 */
 	function parse_for_help(){
-		if( strpos( $_POST['text'], '-help' ) !== false ){
-			$GLOBALS['karma_mod'] = 'help';
+ 		if( strpos( $_POST['text'], '-help' ) !== false ){
+ 			$GLOBALS['karma_mod'] = 'help';
+ 			return true;
+ 		}
+ 	}
+
+	function parse_for_joke(){
+		if( strpos( $_POST['text'], 'tell me a joke' ) !== false ){
+			$GLOBALS['karma_mod'] = 'joke';
 			return true;
 		}
 	}
@@ -228,7 +235,7 @@
 		insert_delete_new_player( $name ); // I'd like to not run this all the time, but the if is inside this function
 
 		require_once( __DIR__ . '/responses.php' );
-		
+
 		if( $GLOBALS['karma_mod'] == 'add' || $GLOBALS['karma_mod'] == 'sub' ){ // We've added or subtracted Karma, need general openings
 			$karma_report = "$name now has `💎$karma`";
 			if( roll() ){
