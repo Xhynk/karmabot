@@ -1,39 +1,57 @@
----
----
-
-@import "{{ site.theme }}";
-
+--- --- @import  "{{ site.theme }}";
 $color-primary: #8cc8ff; // 140 200 255
 $color-halfway: #7dabff; // 125 171 255
 $color-secondary: #6d8dff; // 109 141 255
-
 $bold-primary: #00caf9; // 0 202 249
-$bold-halfway: #27abfc ; // 39 171 252
+$bold-halfway: #27abfc; // 39 171 252
 $bold-secondary: #4d8cff; // 77 140 255
 
 .page-header {
-	background: linear-gradient(
-		135deg,
-		$color-primary,
-		$color-secondary
-	);
+	background: linear-gradient( 135deg, $color-primary, $color-secondary );
 }
 
 @for $index from 1 through 6 {
 	.main-content h#{$index} span {
 		// Gradient Text
-		background: linear-gradient(
-			90deg,
-			$bold-primary,
-			$bold-secondary
-		);
+		background: linear-gradient( 90deg, $bold-primary, $bold-secondary );
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-
 		// General Styles
 		font-weight: 600;
-
 		// Fallback
 		color: $bold-halfway;
 	}
+}
+
+@import "compass/css3";
+
+@import url(http://fonts.googleapis.com/css?family=Lato:700,900);
+
+@function longshadow($color_a,$color_b,$stepnum, $opacity: 1) {
+	$gradient_steps: null;
+	@for $i from 1 through $stepnum {
+		$weight: ( ( $i - 1 ) / $stepnum ) * 100;
+		$colour_mix: mix($color_b, rgba($color_a, $opacity), $weight);
+		$seperator: null;
+		@if($i != $stepnum) {
+			$seperator: #{','};
+		}
+		$gradient_steps: append( #{$gradient_steps}, #{$i}px #{$i}px $colour_mix $seperator );
+	}
+	@return $gradient_steps;
+}
+$bg: #e74c3c;
+
+body {
+	background: $bg;
+}
+
+.longshadow {
+	color: #fff;
+	font-size: 8rem;
+	line-height: 8rem;
+	font-family: lato;
+	font-weight: 900;
+	text-align: center;
+	@include text-shadow(longshadow(darken($bg,30%),$bg,50, 0.5));
 }
