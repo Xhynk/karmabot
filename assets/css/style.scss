@@ -3,8 +3,9 @@
 
 @import "{{ site.theme }}";
 
-$color-primary: #8cc8ff;
-$color-secondary: #6d8dff;
+$color-primary: #8cc8ff; //140 200 255
+$color-halfway: #7dabff; //125 171 255
+$color-secondary: #6d8dff; //109 141 255
 
 .page-header {
 	background: linear-gradient(
@@ -12,4 +13,19 @@ $color-secondary: #6d8dff;
 		$color-primary,
 		$color-secondary
 	);
+}
+
+@for $index from 1 through 6 {
+	.main-content h#{$index}{
+		background: linear-gradient(
+			left,
+			$color-primary,
+			$color-secondary
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		// Fallback
+		color: $color-halfway;
+	}
 }
