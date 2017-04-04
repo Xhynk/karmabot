@@ -2,3 +2,14 @@
 ---
 
 @import "{{ site.theme }}";
+
+$color-primary: #8cc8ff;
+$color-secondary: #6d8dff;
+
+.page-header {
+	background: linear-gradient(
+		135deg,
+		$color-primary,
+		$color-secondary
+	);
+}
