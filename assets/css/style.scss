@@ -3,9 +3,13 @@
 
 @import "{{ site.theme }}";
 
-$color-primary: #8cc8ff; //140 200 255
-$color-halfway: #7dabff; //125 171 255
-$color-secondary: #6d8dff; //109 141 255
+$color-primary: #8cc8ff; // 140 200 255
+$color-halfway: #7dabff; // 125 171 255
+$color-secondary: #6d8dff; // 109 141 255
+
+$bold-primary: #00caf9; // 0 202 249
+$bold-halfway: #27abfc ; // 39 171 252
+$bold-secondary: #4d8cff; // 77 140 255
 
 .page-header {
 	background: linear-gradient(
@@ -17,15 +21,19 @@ $color-secondary: #6d8dff; //109 141 255
 
 @for $index from 1 through 6 {
 	.main-content h#{$index}{
+		// Gradient Text
 		background: linear-gradient(
 			90deg,
-			$color-primary,
-			$color-secondary
+			$bold-primary,
+			$bold-secondary
 		);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 
+		// General Styles
+		font-weight: 600;
+
 		// Fallback
-		color: $color-halfway;
+		color: $bold-halfway;
 	}
 }
