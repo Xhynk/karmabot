@@ -74,6 +74,7 @@
 
 		$response_type = 'in_channel';
 		$response_text = $joke->value;
+		$response_text = 'Apologies. I\'ve been told the subject matter for my jokes was too shallow, so I have hung up my hat as far as joke telling goes';
 	} else {
 		$response_type = 'in_channel';
 		$response_text = compile_response( $user );
