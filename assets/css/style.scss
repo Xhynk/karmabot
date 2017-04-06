@@ -66,12 +66,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 .main-content a {
 	color: $bold-primary;
 	background: -webkit-linear-gradient(
-		90deg,
-		$bold-primary,
-		$bold-secondary
-	);
-	background: -moz-linear-gradient(
-		270deg,
+		0deg,
 		$bold-primary,
 		$bold-secondary
 	);
