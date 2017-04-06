@@ -31,14 +31,16 @@ $bold-secondary: #4d8cff; // 77 140 255
 	}
 
 	.main-content h#{$index} span {
-		// Gradient Text
-		background: linear-gradient(
+		// Gradient Text with Fallback
+		color: $bold-primary;
+		background: -webkit-linear-gradient(
 			90deg,
 			$bold-primary,
 			$bold-secondary
 		);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		background: -o-linear-gradient(transparent, transparent);
 
 		// General Styles
 		font-weight: 600;
@@ -53,13 +55,17 @@ $bold-secondary: #4d8cff; // 77 140 255
 }
 
 .main-content a {
-	background: linear-gradient(
+	color: $bold-primary;
+	background: -webkit-linear-gradient(
 		90deg,
 		$bold-primary,
 		$bold-secondary
 	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	background: -o-linear-gradient(transparent, transparent);
+
+
 	position: relative;
 	font-weight: 800;
 	padding: 0 2px;
@@ -154,7 +160,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 	.gem {
 		display: none;
 	}
-	
+
 	.gem-mobile {
 		display: block;
 	}
