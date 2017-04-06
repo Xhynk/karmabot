@@ -145,3 +145,9 @@ $bold-secondary: #4d8cff; // 77 140 255
 		font-weight: 100;
 	}
 }
+
+@media screen and (max-width: 42em) {
+	.project-name {
+		font-size: 62px;
+	}
+}
