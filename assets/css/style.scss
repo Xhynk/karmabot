@@ -152,6 +152,31 @@ $bold-secondary: #4d8cff; // 77 140 255
 	display: none;
 }
 
+.results {
+	padding: 1rem;
+	background: #f6f9fd;
+	border-radius: 3px;
+	border: 1px solid #e9ebec;
+}
+
+.slack--light {
+	color: #ccc;
+	font-weight: 600;
+}
+
+.slack--lighter {
+	font-size: 80%;
+	color: #aaa;
+}
+
+.slack--response {
+	margin-left: 63px;
+
+	& > blockquote {
+		margin: 0;
+	}
+}
+
 @media screen and (min-width: 64em) {
 	.project-tagline {
 		font-size: 1.25rem;
