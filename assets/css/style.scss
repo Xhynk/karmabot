@@ -148,6 +148,11 @@ $bold-secondary: #4d8cff; // 77 140 255
 	padding: 2px 8px;
 }
 
+.main-content table {
+	display: table;
+	text-align: left;
+}
+
 .gem-mobile {
 	display: none;
 }
