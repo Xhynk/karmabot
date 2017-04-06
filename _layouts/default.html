@@ -30,7 +30,7 @@
 		<h1 id="about"><i class="material-icons icon-left">info_outline</i> <span>About</span></h1>
 		<p>Karmabot has an array of responses while performing commands, ranging from adding and removing <strong>Kᴀʀᴍᴀ</strong> from a user, to even adding a new user to the database. While performing <strong>Kᴀʀᴍᴀ</strong> based tasks, such as resetting or adding <strong>Kᴀʀᴍᴀ</strong> to a user’s balance, there is a small chance of a “rare” or “legendary” response. Currently the response options are an array, and the array has a random item selected from it.</p>
 
-		<p>Standard <strong>Kᴀʀᴍᴀ</strong> balance is denoted in backticks (grave symbol) when displayed, with the Gemstone unicode icon `U+1F48E` like so:</p>
+		<p>Standard <strong>Kᴀʀᴍᴀ</strong> balance is denoted in backticks (grave symbol) when displayed, with the Gemstone unicode icon <code class="highlighter-rouge">U+1F48E</code> like so:</p>
 
 		<div class="results">
 			<div class="align-left">💎</div>
@@ -76,16 +76,15 @@
 		</ul>
 
 		<h1 id="commands"><i class="material-icons icon-left">code</i> <span>Commands</span></h1>
-		<blockquote>
-			<p>Note: <code class="highlighter-rouge">/karmabot</code> and <code class="highlighter-rouge">/karmabot,</code> both work currently.</p>
-		</blockquote>
+		Currently, I've set both <code class="highlighter-rouge">/karmabot</code> and <code class="highlighter-rouge">/karmabot,</code> as Slash Commands, since it feels more natural to invoke karmabot using proper speech which can include an immediate comma which breaks the command <code class="highlighter-rouge">/karmabot`</code>. Below is a list of commands and arguments that karmabot knows and can parse.</p>
 
 		<ul>
 			<li><code class="highlighter-rouge">/karmabot -help</code> - Display some quick tips.</li>
 			<li><code class="highlighter-rouge">/karmabot, give @alex +10 karma</code> - Add <strong>Kᴀʀᴍᴀ</strong> to a user’s balance.</li>
 			<li><code class="highlighter-rouge">/karmabot, take -10 karma from @alex</code> - Subtract <strong>Kᴀʀᴍᴀ</strong> from a user’s balance.</li>
 			<li><code class="highlighter-rouge">/karmabot @alex -sudo --reset</code> - Reset a user’s <strong>Kᴀʀᴍᴀ</strong> back to 0.</li>
-			<li><code class="highlighter-rouge">/karmabot add new player @name "m/f"</code>. - Add users to the game! “m” or “f” is required for gender pronoun selection.</li>
+			<li><code class="highlighter-rouge">/karmabot add new player @name "m/f"</code> - Add users to the game! “m” or “f” is required for gender pronoun selection.</li>
+			<li><code class="highlighter-rouge">/karmabot remove player @name</code> - Being a party pooper? Drop them from the game.
 			<li><code class="highlighter-rouge">/karmabot, how much karma does @alex have?</code> - If a <strong>Kᴀʀᴍᴀ</strong> function isn’t ran, it will run a <strong>Kᴀʀᴍᴀ</strong> balance query instead.</li>
 		</ul>
 
