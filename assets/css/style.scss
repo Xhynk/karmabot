@@ -61,6 +61,10 @@ $bold-secondary: #4d8cff; // 77 140 255
 	font-weight: 800;
 	padding: 0 2px;
 
+	&:hover {
+		opacity: .9;
+	}
+
 	&:after {
 		content: "";
 		width: 100%;
