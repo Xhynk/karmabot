@@ -57,6 +57,22 @@ $bold-secondary: #4d8cff; // 77 140 255
 	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	position: relative;
+
+	&:after {
+		content: "";
+		width: 100%;
+		height: 2px;
+		background: linear-gradient(
+			90deg,
+			$bold-primary,
+			$bold-secondary
+		);
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -3px;
+	}
 }
 
 .project-name {
