@@ -151,6 +151,10 @@ $bold-secondary: #4d8cff; // 77 140 255
 .main-content table {
 	display: table;
 	text-align: left;
+
+	& th {
+		background: #f3f6fa;
+	}
 }
 
 .gem-mobile {
