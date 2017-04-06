@@ -17,7 +17,7 @@
 	<section class="page-header">
 		<div class="logo"><span class="gem">💎</span><span class="gem-mobile">💎</span></div>
 		<h1 class="project-name" data-text="{{ site.title | default: site.github.repository_name }}">{{ site.title | default: site.github.repository_name }}</h1>
-		<h2 class="project-tagline">A simple interactive Slash command to give Karma (points) to users.</h2> {% if site.github.is_project_page %}
+		<h2 class="project-tagline">A simple interactive Slash Command for Slack to give Karma (points) to users.</h2> {% if site.github.is_project_page %}
 		<a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a> {% endif %} {% if site.show_downloads %}
 		<a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
 		<a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a> {% endif %}
@@ -28,14 +28,39 @@
 		<p>Karmabot is a <a href="https://api.slack.com/slash-commands">Slack Slash Command</a> that is able to divvy out “<strong>Kᴀʀᴍᴀ</strong>” credits to users.</p>
 
 		<h1 id="about"><i class="material-icons icon-left">info_outline</i> <span>About</span></h1>
-		<p>Karmabot has an array of responses while performing commands, ranging from adding and removing <strong>Kᴀʀᴍᴀ</strong> from a user, to even adding a new user to the database. While performing <strong>Kᴀʀᴍᴀ</strong> based tasks, such as resetting or adding
-			<strong>Kᴀʀᴍᴀ</strong> to a user’s balance, there is a small chance of a “rare” or “legendary” response. Currently the response options are an array, and the array has a random item selected from it.</p>
+		<p>Karmabot has an array of responses while performing commands, ranging from adding and removing <strong>Kᴀʀᴍᴀ</strong> from a user, to even adding a new user to the database. While performing <strong>Kᴀʀᴍᴀ</strong> based tasks, such as resetting or adding <strong>Kᴀʀᴍᴀ</strong> to a user’s balance, there is a small chance of a “rare” or “legendary” response. Currently the response options are an array, and the array has a random item selected from it.</p>
 
-		<p>Standard <strong>Kᴀʀᴍᴀ</strong> balance is denoted in quotes when displayed, with the Gemstone unicode icon like so:</p>
+		<p>Standard <strong>Kᴀʀᴍᴀ</strong> balance is denoted in backticks (grave symbol) when displayed, with the Gemstone unicode icon `U+1F48E` like so:</p>
 
-		<blockquote>
-			<p>Let me check for you: @alex has a <strong>Kᴀʀᴍᴀ</strong> balance of <code class="highlighter-rouge">💎1000</code>”</p>
-		</blockquote>
+		<p>
+			<span>Sure thing!</span><br />
+			<blockquote>
+				@alex now has a <code class="highlighter-rouge">💎1000</code></p>
+			</blockquote>
+		</p>
+
+		<p>Karmabot stores all <strong>Kᴀʀᴍᴀ</strong> values in a database, which is configured in the <code class="highlighter-rouge">/config/config.php</code> file. The database format is currently as follows:
+			<table border="0" class="table table-striped">
+				<tbody>
+					<tr>
+						<th>id</th>
+						<th>users</th>
+						<th>gender</th>
+						<th>karma_received</th>
+						<th>karma_given</th>
+						<th>karma_available</th>
+					</tr>
+					<tr>
+						<td>0</td>
+						<td>@alex</td>
+						<td>m</td>
+						<td>100</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+				</tbody>
+			</table>
+		</p>
 
 		<h1 id="commands"><i class="material-icons icon-left">code</i> <span>Commands</span></h1>
 		<blockquote>
