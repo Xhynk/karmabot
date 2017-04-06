@@ -58,6 +58,8 @@ $bold-secondary: #4d8cff; // 77 140 255
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	position: relative;
+	font-weight: 800;
+	padding: 0 2px;
 
 	&:after {
 		content: "";
