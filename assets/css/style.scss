@@ -138,6 +138,10 @@ $bold-secondary: #4d8cff; // 77 140 255
 	padding: 2px 8px;
 }
 
+.gem-mobile {
+	display: none;
+}
+
 @media screen and (min-width: 64em) {
 	.project-tagline {
 		font-size: 1.25rem;
@@ -147,6 +151,14 @@ $bold-secondary: #4d8cff; // 77 140 255
 }
 
 @media screen and (max-width: 42em) {
+	.gem {
+		display: none;
+	}
+	
+	.gem-mobile {
+		display: block;
+	}
+
 	.project-name {
 		font-size: 62px;
 		text-shadow: 0 1px 0 #ccc,
