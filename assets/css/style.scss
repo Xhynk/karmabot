@@ -15,7 +15,6 @@ $bold-halfway: #27abfc ; // 39 171 252
 $bold-secondary: #4d8cff; // 77 140 255
 
 .page-header {
-	padding: 4rem 6rem;
 	background: linear-gradient(
 		135deg,
 		$color-primary,
@@ -88,6 +87,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 .project-name {
 	color: #fff;
 	font-size: 6em;
+	font-size: 76px;
 	letter-spacing: 0.05em;
 	font-weight: bold;
 	font-family: 'Teko', helvetica, sans-serif;
@@ -107,7 +107,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 
 .logo {
 	font-size: 5em;
-	height: 75px;
+	height: 100px;
 
 	.gem {
 	text-shadow: 0 6px 1px rgba(0,0,0,.05),
