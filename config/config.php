@@ -11,7 +11,7 @@
 	*/
 
 	##  (\ /)
-	## ( . .) ♥ ~< Code Block - i: Define Database Constants >
+	## ( . .) ♥ ~< Code Block - i: Define Database Constants, Please be nice. >
 	## c(”)(”)
 
 	define( 'DB_PREFIX', 'ademchak_' );
