@@ -75,3 +75,21 @@ $bold-secondary: #4d8cff; // 77 140 255
 				 0 20px 20px rgba(0,0,0,.075);
 	}
 }
+
+.octicon {
+	width: 23px;
+	height: 23px;
+	position: relative;
+	top: 5px;
+	margin: -5px 0 0 8px;
+	fill: rgba(255,255,255,.6);
+}
+
+
+@media screen and (min-width: 64em) {
+	.project-tagline {
+		font-size: 1.25rem;
+		opacity: 1;
+		font-weight: 100;
+	}
+}
