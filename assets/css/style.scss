@@ -14,6 +14,7 @@ $bold-halfway: #27abfc ; // 39 171 252
 $bold-secondary: #4d8cff; // 77 140 255
 
 .page-header {
+	padding: 4rem 6rem;
 	background: linear-gradient(
 		135deg,
 		$color-primary,
@@ -62,7 +63,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 
 .logo {
 	font-size: 5em;
-	height: 65px;
+	height: 75px;
 
 	.gem {
 	text-shadow: 0 6px 1px rgba(0,0,0,.05),
