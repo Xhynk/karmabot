@@ -53,14 +53,20 @@ $bold-secondary: #4d8cff; // 77 140 255
 }
 
 @for $index from 2 through 6 {
-	h#{$index} {
+	.main-content h#{$index} {
 		font-weight: 600;
 		color: #000;
+		margin-top: 1em;
+		margin-bottom: .5em;
 	}
 }
 
 .main-content {
 	line-height: 1.675;
+}
+
+.main-content .inline-block {
+	display: inline-block;
 }
 
 .main-content a {
