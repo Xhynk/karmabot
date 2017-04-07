@@ -91,6 +91,20 @@ $bold-secondary: #4d8cff; // 77 140 255
 
 .main-content form.inline-block button {
 	right: 6px;
+	border: none;
+	padding: 3px 8px;
+	background: linear-gradient(
+		0deg,
+		$bold-primary,
+		$bold-secondary
+	);
+
+	& i {
+		color: #fff;
+		position: relative;
+		top: 4px;
+		left: 1px;
+	}
 }
 
 .main-content a {
