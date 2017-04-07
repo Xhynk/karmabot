@@ -65,8 +65,32 @@ $bold-secondary: #4d8cff; // 77 140 255
 	line-height: 1.675;
 }
 
-.main-content .inline-block {
+.inline {
+	display: inline;
+}
+
+.inline-block {
 	display: inline-block;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.main-content form.inline-block input {
+	padding: .34em .65em;
+	margin: 0 .34em;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	box-shadow: 0 2px 5px rgba(0,0,0,.15);
+}
+
+.main-content form.inline-block button {
+	right: 6px;
 }
 
 .main-content a {
