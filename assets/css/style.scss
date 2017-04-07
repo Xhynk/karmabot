@@ -99,6 +99,14 @@ $bold-secondary: #4d8cff; // 77 140 255
 		$bold-secondary
 	);
 
+	&:hover {
+		background: linear-gradient(
+			270deg,
+			$bold-primary,
+			$bold-secondary
+		);
+	}
+
 	& i {
 		color: #fff;
 		position: relative;
