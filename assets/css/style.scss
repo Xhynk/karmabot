@@ -22,7 +22,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 	);
 }
 
-@for $index from 1 through 6 {
+/* @for $index from 1 through 6 {
 	.main-content h#{$index} i {
 		color: $bold-primary;
 		font-size: 100%;
@@ -52,6 +52,36 @@ $bold-secondary: #4d8cff; // 77 140 255
 		// Fallback
 		color: $bold-halfway;
 	}
+}*/
+
+.main-content h1 i {
+	color: $bold-primary;
+	font-size: 100%;
+	position: relative;
+	top: 5px;
+}
+
+.main-content h1 {
+	color: $bold-primary;
+}
+
+.main-content h1 span {
+	// Gradient Text with Fallback
+	color: $bold-primary;
+	background: -webkit-linear-gradient(
+		0deg,
+		$bold-primary,
+		$bold-secondary
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background: -o-linear-gradient(transparent, transparent);
+
+	// General Styles
+	font-weight: 600;
+
+	// Fallback
+	color: $bold-halfway;
 }
 
 .main-content {
