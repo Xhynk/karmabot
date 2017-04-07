@@ -78,7 +78,7 @@ $bold-secondary: #4d8cff; // 77 140 255
 		opacity: .9;
 	}
 
-	&:after {
+	&:not(.download):after {
 		content: "";
 		width: 100%;
 		height: 2px;
@@ -92,6 +92,14 @@ $bold-secondary: #4d8cff; // 77 140 255
 		right: 0;
 		bottom: -3px;
 	}
+}
+
+.main-content a i {
+	.main-content a i {
+	color: #00caf9;
+	-webkit-text-fill-color: #00caf9;
+	position: relative;
+	top: 7px;
 }
 
 .project-name {
