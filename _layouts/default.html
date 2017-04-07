@@ -100,10 +100,28 @@
 					<li>There is no prepackaged <code>.zip</code> file, use the master branch.</li>
 				</ul>
 
-				<h2>Slack</h2>
+				<h2>Server:</h2>
+				<ol>
+					<li>After downloading the src, upload it to your server.</li>
+					<li>Set up your database and place the information in <strong>/config/config.php</strong> <em>(Note: Use the <strong>/config/config.sample.php</strong> as a template)</em>
+				</ol>
+
+				<h2>Slack:</h2>
 				<ol>
 					<li>First you'll need to set up a <a href="https://api.slack.com/slash-commands/" target="_blank">Slack Slash Command</a>.</li>
 					<li><form method="get" target="_blank" action="https://jamsandjelli.es/api/slack-api-v2/karmabot/github-redirect-to-slack.php" class="inline-block"><span>Go to</span> <div class="results inline-block"><span>https://</span><div class="inline-block relative"><input name="team" placeholder="Your Slack Team"></input><button type="submit" class="absolute"><i class="material-icons">forward</i></button></div><span>.slack.com/apps/manage/custom-integrations</span></div></form></li>
+					<li>Click on <strong>Add Configuration</strong>.</li>
+					<li>For <strong>Command</strong> type <strong>/karmabot</strong> (I recommend making another configuration for <strong>/karmabot,</strong> as well)</li>
+					<li>For <strong>URL</strong> use the url to your <strong>/karmabot.php</strong> file.</li>
+					<li><strong>Method</strong> should be set to POST.</li>
+					<li><em>(Note: I've been using <strong>"-help" for options</strong> for the <strong>Usage Hint</strong>)</em>.</li>
+					<li>Click <strong>Save Integration</strong>.</li>
+				</ol>
+
+				<h2>Usage:</h2>
+				<ol>
+					<li>In Slack, use <strong>/karmabot</strong> followed by a command above.</li>
+					<li>The command list will continue to be updated, check back to download new master branch sourcesm, or add your own commands!</li>
 				</ol>
 			</section>
 
