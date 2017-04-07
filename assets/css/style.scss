@@ -52,6 +52,13 @@ $bold-secondary: #4d8cff; // 77 140 255
 	color: $bold-halfway;
 }
 
+@for $index from 2 through 6 {
+	h#{$index} {
+		font-weight: 600;
+		color: #000;
+	}
+}
+
 .main-content {
 	line-height: 1.675;
 }
