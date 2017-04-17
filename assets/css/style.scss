@@ -228,10 +228,6 @@ $bold-secondary: #4d8cff; // 77 140 255
 	}
 }
 
-.gem-mobile {
-	display: none;
-}
-
 .results {
 	padding: 1rem;
 	background: #f6f9fd;
@@ -276,14 +272,6 @@ $bold-secondary: #4d8cff; // 77 140 255
 }
 
 @media screen and (max-width: 42em) {
-	.gem {
-		display: none;
-	}
-
-	.gem-mobile {
-		display: block;
-	}
-
 	.main-content .table-desktop {
 		display: none;
 	}
