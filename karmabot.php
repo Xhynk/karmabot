@@ -68,13 +68,16 @@
 
 	if( parse_for_help() == true ){
 		$response_type = 'ephemeral';
-		$response_text = ">Invoke me with the `/karmabot` command\n>I can give users Ҝᴀʀᴍᴀ - `/karmabot, give @$invoking_user +10 karma`\n>I giveth, I taketh away - `/karmabot, take -10 karma from @$invoking_user`\n>Bork something? I can reset Ҝᴀʀᴍᴀ with `/karmabot @$invoking_user -sudo --reset`\n>Check a users Ҝᴀʀᴍᴀ balance with something like `/karmabot, how much karma does @$invoking_user have?`\n>Add Users with the command `/karmabot add new player @name \"m/f\"`.\nRead more on GitHub: https://github.com/Xhynk/karmabot";
+		$response_text = ">Invoke me with the `/karmabot` command\n>I can give users Ҝᴀʀᴍᴀ - `/karmabot, give @$invoking_user +10 karma`\n>I giveth, I taketh away - `/karmabot, take -10 karma from @$invoking_user`\n>Bork something? I can reset Ҝᴀʀᴍᴀ with `/karmabot @$invoking_user -sudo --reset`\n>Check a users Ҝᴀʀᴍᴀ balance with something like `/karmabot, how much karma does @$invoking_user have?`\n>Add Users with the command `/karmabot add new player @name \"m/f\"`.\n\n>Announce the Leaderboard with `/karmabot -leaderboard`\nRead more on GitHub: https://xhynk.github.io/karmabot\nView the source on GitHub: https://github.com/xhynk/karmabot";
 	} else if( parse_for_joke() == true ){
 		$joke = json_decode( file_get_contents( 'https://api.chucknorris.io/jokes/random' ) );
 
 		$response_type = 'in_channel';
 		$response_text = $joke->value;
 		$response_text = 'Apologies. I\'ve been told the subject matter for my jokes was too shallow, so I have hung up my hat as far as joke telling goes';
+	} else if( parse_for_leaderboard() ){
+		$response_type = 'in_channel';
+		$response_text = parse_for_leaderboard();
 	} else {
 		$response_type = 'in_channel';
 		$response_text = compile_response( $user );

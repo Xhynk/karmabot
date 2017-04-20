@@ -201,6 +201,41 @@
 		}
 	}
 
+	function parse_for_leaderboard(){
+		if( strpos( $_POST['text'], '-leaderboard' ) !== false ){
+			$GLOBALS['karma_mod'] = 'leaderboard';
+
+			global $mysqli;
+			$result = $mysqli->query( "SELECT * FROM `karmabot_list` ORDER by `karma_received` DESC LIMIT 100" );
+
+			$count = 0;
+
+			if( $result ){
+			    while( $row = $result->fetch_object() ){
+					$count++;
+					$name	= $row->users;
+					$karma	= $row->karma_received;
+
+					if( $count == 1 ){
+						$response .= "The current leader is *$name* with `💎$karma`!\n";
+					}
+
+					$_cell_name		= 15;
+					$_cell_karma	= 10;
+
+					$_cell_name_padding = $_cell_name - strlen( $name );
+					$_cell_karma_padding = $_cell_karma - strlen( $karma );
+
+					$response .= "> `$name ". str_repeat( ' ', $_cell_name_padding ) ." | 💎$karma ". str_repeat( ' ', $_cell_karma_padding ) ."`\n";
+				}
+
+				return $response;
+			} else {
+				return 'Dang, something went wrong. Let @alex now he didn\'t program me very well.';
+			}
+		}
+	}
+
 	##  (\ /)
 	## ( . .) ♥ ~< Code Block - C: Response Functions >
 	## c(”)(”)
