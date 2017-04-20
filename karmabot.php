@@ -68,7 +68,7 @@
 
 	if( parse_for_help() == true ){
 		$response_type = 'ephemeral';
-		$response_text = ">Invoke me with the `/karmabot` command\n>I can give users Ҝᴀʀᴍᴀ - `/karmabot, give @$invoking_user +10 karma`\n>I giveth, I taketh away - `/karmabot, take -10 karma from @$invoking_user`\n>Bork something? I can reset Ҝᴀʀᴍᴀ with `/karmabot @$invoking_user -sudo --reset`\n>Check a users Ҝᴀʀᴍᴀ balance with something like `/karmabot, how much karma does @$invoking_user have?`\n>Add Users with the command `/karmabot add new player @name \"m/f\"`.\n>Announce the Leaderboard with `/karmabot -leaderboard`\nRead more on GitHub: https://xhynk.github.io/karmabot\nView the source on GitHub: https://github.com/xhynk/karmabot";
+		$response_text = ">Invoke me with the `/karmabot` command\n>I can give users *Kᴀʀᴍᴀ* - `/karmabot, give @$invoking_user +10 karma`\n>I giveth, I taketh away - `/karmabot, take -10 karma from @$invoking_user`\n>Bork something? I can reset *Kᴀʀᴍᴀ* with `/karmabot @$invoking_user -sudo --reset`\n>Check a users *Kᴀʀᴍᴀ* balance with `/karmabot, how much karma does @$invoking_user have?`\n>Add Users with the command `/karmabot add new player @name \"m/f\"`.\n>Announce the Leaderboard with `/karmabot -leaderboard`\nRead more on GitHub: https://xhynk.github.io/karmabot\nView the source on GitHub: https://github.com/xhynk/karmabot";
 	} else if( parse_for_joke() == true ){
 		$joke = json_decode( file_get_contents( 'https://api.chucknorris.io/jokes/random' ) );
 
