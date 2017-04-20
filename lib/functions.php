@@ -217,8 +217,15 @@
 					$karma	= $row->karma_received;
 
 					if( $count == 1 ){
-						$response .= "The current leader is *$name* with `💎$karma`!\n";
+						$response .= "The current leader is:\n> *$name* with `💎$karma`!\n";
 					}
+					break;
+				}
+
+				$response .= "```";
+				while( $row = $result->fetch_object() ){
+					$name	= $row->users;
+					$karma	= $row->karma_received;
 
 					$_cell_name		= 15;
 					$_cell_karma	= 10;
@@ -226,8 +233,9 @@
 					$_cell_name_padding = $_cell_name - strlen( $name );
 					$_cell_karma_padding = $_cell_karma - strlen( $karma );
 
-					$response .= "> `$name ". str_repeat( ' ', $_cell_name_padding ) ." | 💎$karma ". str_repeat( ' ', $_cell_karma_padding ) ."`\n";
+					$response .= "$name ". str_repeat( '.', $_cell_name_padding ) ." 💎$karma\n";
 				}
+				$response .= "```";
 
 				return $response;
 			} else {
